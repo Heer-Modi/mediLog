@@ -1,0 +1,186 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(to bottom right, #ccefff, #f0f8ff);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+/* Wrapper */
+.login-wrapper {
+  display: flex;
+  width: 90%;
+  max-width: 980px;
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+}
+
+/* Left Panel */
+.login-left {
+  flex: 1;
+  background: #ffffff;
+  padding: 50px 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.login-left img {
+  width: 240px;
+  margin-bottom: 28px;
+}
+
+.login-left h1 {
+  font-size: 32px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0;
+}
+
+.login-left p {
+  font-size: 16px;
+  color: #444;
+  margin-top: 10px;
+  max-width: 280px;
+}
+
+/* Right Panel */
+.login-right {
+  flex: 1;
+  background: transparent;
+  padding: 60px 70px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.login-header {
+  margin-bottom: 10px;
+}
+
+.login-header h2 {
+  font-size: 28px;
+  font-weight: 700;
+  margin: 0;
+  color: #007bff;
+}
+
+.login-header p {
+  font-size: 16px;
+  color: #555;
+  margin-top: 6px;
+}
+
+/* Form */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.form-group label {
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+
+.form-group input {
+  padding: 14px 16px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 15px;
+  outline: none;
+  background: #fff;
+  transition: border 0.3s;
+}
+
+.form-group input:focus {
+  border-color: #007bff;
+}
+
+/* Password Toggle */
+.password-toggle {
+  position: relative;
+}
+
+.toggle-eye {
+  position: absolute;
+  top: 38px;
+  right: 16px;
+  color: #888;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+/* Button */
+.login-button {
+  padding: 14px;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: 10px;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.login-button:hover {
+  background-color: #0066d4;
+}
+
+/* Links */
+.helper-links {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.helper-links a {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.helper-links a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .login-wrapper {
+    flex-direction: column;
+    width: 100%;
+    border-radius: 0;
+  }
+
+  .login-left,
+  .login-right {
+    padding: 100px 50px;
+    width: 100%;
+  }
+
+  .login-left img {
+    width: 180px;
+  }
+
+  .login-right {
+    padding: 100px 50px;
+  }
+}

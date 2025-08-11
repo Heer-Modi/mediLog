@@ -1,0 +1,21 @@
+.header {
+  width: calc(100% - 48px);
+  margin: 24px auto 0 auto;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 4px 24px rgba(139, 92, 246, 0.10);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 64px;
+  position: relative;
+  z-index: 10;
+}
+
+.logo {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #8b5cf6;
+  letter-spacing: 0.05em;
+  font-family: 'Poppins', 'Segoe UI', sans-serif;
+}

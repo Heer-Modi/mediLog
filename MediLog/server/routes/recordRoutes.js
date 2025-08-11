@@ -1,23 +1,38 @@
+// server/routes/recordRoutes.js
 const express = require("express");
 const {
     getRecords,
     createRecord,
     deleteRecord,
-    getSharedRecord
+    getSharedRecord,
+    streamRecordFile,
+    downloadRecordFile,
+    getSharedRecordFile
 } = require("../controllers/recordController");
 const { protect } = require("../middleware/authMiddleware");
 const uploadCloudinary = require("../middleware/uploadCloudinary");
 
 const router = express.Router();
 
-router.route("/")
-    .get(protect, getRecords)
-    .post(protect, uploadCloudinary.single("file"), createRecord);
+// All records for logged-in user
+router.get("/", protect, getRecords);
 
-router.route("/:id")
-    .delete(protect, deleteRecord);
+// Upload record
+router.post("/", protect, uploadCloudinary.single("file"), createRecord);
 
-router.route("/shared/:token")
-    .get(getSharedRecord);
+// Delete record
+router.delete("/:id", protect, deleteRecord);
+
+// Public metadata by share token
+router.get("/shared/:token", getSharedRecord);
+
+// Public file via share token
+router.get("/shared/:token/file", getSharedRecordFile);
+
+// View a file (authenticated) – will also allow token in query param
+router.get("/:id/view", protect, streamRecordFile);
+
+// Download a file (authenticated) – will also allow token in query param
+router.get("/:id/download", protect, downloadRecordFile);
 
 module.exports = router;

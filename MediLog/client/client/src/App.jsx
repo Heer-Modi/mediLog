@@ -1,21 +1,45 @@
-import React from "react";
-import Button from "@mui/material/Button";
-import Container from "@mui/material/Container";
-import Typography from "@mui/material/Typography";
+import { Routes, Route, Navigate } from 'react-router-dom';
 
-function App() {
-return (
-<Container maxWidth="sm" style={{ marginTop: "4rem", textAlign: "center" }}>
-<Typography variant="h4" gutterBottom>
-MediLog - Personal Medical Record Portal
-</Typography>
-<Button variant="contained" color="primary">
-Get Started
-</Button>
-</Container>
-);
-}
+import Login from './pages/Login';
+import Register from './pages/Register';
+
+// Patient Dashboard Pages
+import DashboardHome from './pages/dashboard/DashboardHome';
+import UploadRecord from './pages/dashboard/UploadRecord';
+import ViewRecords from './pages/dashboard/ViewRecords';
+import Profile from './pages/dashboard/Profile';
+import Calendar from './pages/dashboard/Calendar';
+import Share from './pages/dashboard/Share';
+
+// Doctor Dashboard Pages
+import DoctorDashboard from './pages/doctor/DoctorDashboard';
+import ViewPatients from './pages/doctor/ViewPatients';
+import Appointments from './pages/doctor/Appointments';
+
+const App = () => {
+  return (
+    <Routes>
+      {/* Public Routes */}
+      <Route path="/" element={<Login />} />
+      <Route path="/register" element={<Register />} />
+
+      {/* Patient Dashboard Pages */}
+      <Route path="/dashboard/home" element={<DashboardHome />} />
+      <Route path="/dashboard/upload" element={<UploadRecord />} />
+      <Route path="/dashboard/records" element={<ViewRecords />} />
+      <Route path="/dashboard/profile" element={<Profile />} />
+      <Route path="/dashboard/calendar" element={<Calendar />} />
+      <Route path="/dashboard/share" element={<Share />} />
+
+      {/* Doctor Dashboard Pages */}
+      <Route path="/doctor/dashboard" element={<DoctorDashboard />} />
+      <Route path="/doctor/patients" element={<ViewPatients />} />
+      <Route path="/doctor/appointments" element={<Appointments />} />
+
+      {/* Fallback Route */}
+      <Route path="*" element={<Navigate to="/" replace />} />
+    </Routes>
+  );
+};
 
 export default App;
-
- 

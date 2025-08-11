@@ -1,0 +1,180 @@
+.dashboardContainer {
+  display: flex;
+  min-height: 100vh;
+  font-family: 'Poppins', 'Segoe UI', sans-serif;
+  background: #ede6fa;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.mainContent {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  margin-left: 134px;
+}
+
+.contentWrapper {
+  padding: 32px 32px 0 32px;
+  background: none;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.heading {
+  font-weight: 700;
+  color: #8b5cf6;
+  margin-bottom: 24px !important;
+  font-size: 2rem !important;
+  letter-spacing: 0.01em;
+}
+
+.folderGrid {
+  width: 100%;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+}
+
+.folderCard {
+  cursor: pointer;
+  border-radius: 24px !important;
+  box-shadow: 0 4px 24px rgba(139, 92, 246, 0.10) !important;
+  background: linear-gradient(90deg, #b993f7 0%, #d1a5f7 100%) !important;
+  transition: box-shadow 0.2s, background 0.2s;
+  text-align: center;
+  min-width: 240px;
+  max-width: 240px;
+  min-height: 180px;
+  max-height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  position: relative;
+}
+.folderCard:hover, .folderCard:focus {
+  box-shadow: 0 8px 32px rgba(139, 92, 246, 0.18) !important;
+  background: linear-gradient(90deg, #a78bfa 0%, #f9a8d4 100%) !important;
+}
+
+.folderCardContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.folderIcon {
+  font-size: 3.5rem !important;
+  color: #fff !important;
+  margin-bottom: 16px;
+  filter: drop-shadow(0 2px 8px rgba(139, 92, 246, 0.15));
+}
+
+.folderName {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: 0.03em;
+  text-shadow: 0 2px 8px rgba(139, 92, 246, 0.10);
+  font-family: 'Poppins', 'Segoe UI', sans-serif;
+}
+
+.uploadFormBox {
+  width: 100%;
+  max-width: 900px;
+  background: #fff;
+  border-radius: 24px;
+  box-shadow: 0 4px 24px rgba(139, 92, 246, 0.10);
+  padding: 32px 32px 24px 32px;
+  margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.folderHeader {
+  display: flex;
+  align-items: center;
+  margin-bottom: 24px;
+  width: 100%;
+}
+
+.backButton {
+  margin-right: 12px !important;
+  background: none !important;
+  box-shadow: none !important;
+}
+
+.folderIconLarge {
+  font-size: 2.5rem !important;
+  color: #8b5cf6 !important;
+  margin-right: 12px;
+}
+
+.folderNameLarge {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #8b5cf6;
+}
+
+.uploadForm {
+  width: 100%;
+  margin-bottom: 0;
+}
+
+.folderLabel {
+  font-weight: bold;
+  color: #8b5cf6;
+  font-size: 1.1rem;
+  margin-bottom: 8px !important;
+}
+
+.recordCard {
+  border-radius: 20px !important;
+  box-shadow: 0 4px 24px rgba(139, 92, 246, 0.10) !important;
+  margin-bottom: 12px;
+}
+
+.recordTitle {
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-bottom: 4px !important;
+}
+
+.recordDescription {
+  color: #6b7280;
+  margin-bottom: 4px !important;
+}
+
+.recordDate {
+  color: #a78bfa;
+  font-size: 0.95rem;
+  margin-bottom: 8px !important;
+}
+
+.viewButton {
+  background: #ede6fa !important;
+  color: #8b5cf6 !important;
+  border-radius: 12px !important;
+  font-weight: 600 !important;
+  margin-right: 8px !important;
+  text-transform: none !important;
+}
+
+.uploadButton {
+  height: 56px !important;
+  font-weight: 600 !important;
+  border-radius: 12px !important;
+  background: linear-gradient(90deg, #a78bfa 0%, #f9a8d4 100%) !important;
+  color: #fff !important;
+  box-shadow: 0 2px 8px rgba(139, 92, 246, 0.10) !important;
+  text-transform: none !important;
+} 
