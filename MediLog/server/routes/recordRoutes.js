@@ -7,10 +7,13 @@ const {
     getSharedRecord,
     streamRecordFile,
     downloadRecordFile,
-    getSharedRecordFile
+    getSharedRecordFile,
+    createRecordLocal,
+    streamLocalRecord
 } = require("../controllers/recordController");
 const { protect } = require("../middleware/authMiddleware");
 const uploadCloudinary = require("../middleware/uploadCloudinary");
+const uploadLocal = require("../middleware/multer");
 
 const router = express.Router();
 
@@ -18,7 +21,8 @@ const router = express.Router();
 router.get("/", protect, getRecords);
 
 // Upload record
-router.post("/", protect, uploadCloudinary.single("file"), createRecord);
+// router.post("/", protect, uploadCloudinary.single("file"), createRecord);
+router.post("/", protect, uploadLocal.single("file"), createRecordLocal);
 
 // Delete record
 router.delete("/:id", protect, deleteRecord);
@@ -30,7 +34,8 @@ router.get("/shared/:token", getSharedRecord);
 router.get("/shared/:token/file", getSharedRecordFile);
 
 // View a file (authenticated) – will also allow token in query param
-router.get("/:id/view", protect, streamRecordFile);
+// router.get("/:id/view", protect, streamRecordFile);
+router.get("/:id/view", protect, streamLocalRecord);
 
 // Download a file (authenticated) – will also allow token in query param
 router.get("/:id/download", protect, downloadRecordFile);
