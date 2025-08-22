@@ -3,6 +3,8 @@
 const Record = require("../models/Record");
 const crypto = require("crypto");
 const cloudinary = require("../config/cloudinary");
+const path = require("path");
+const fs = require("fs");
 
 /**
  * @desc Get all records for the logged-in user
@@ -176,3 +178,67 @@ exports.getSharedRecordFile = async (req, res) => {
         res.status(500).json({ message: "Failed to fetch shared file" });
     }
 };
+
+exports.createRecordLocal = async (req, res) => {
+    try {
+        if (!req.user) {
+            return res.status(401).json({ message: "Unauthorized, please log in" });
+        }
+
+        const { title, description, category, date } = req.body;
+
+        if (!req.file) {
+            return res.status(400).json({ message: "No file uploaded" });
+        }
+        if (!category || !title || !date) {
+            return res.status(400).json({ message: "Category, title, and date are required" });
+        }
+
+        const record = await Record.create({
+            user: req.user.id,
+            title,
+            description,
+            category,
+            date,
+            fileUrl: req.file.path,
+        });
+
+        res.status(201).json(record);
+    } catch (error) {
+        console.error("CreateRecordLocal Error:", error);
+        res.status(500).json({ message: "Server error creating record" });
+    }
+}
+
+exports.streamLocalRecord = async (req, res) => {
+    try {
+        const record = await Record.findById(req.params.id);
+        if (!record) {
+            return res.status(404).json({ message: "Record not found" });
+        }
+
+        if (record.user.toString() !== req.user.id) {
+            return res.status(403).json({ message: "Not authorized" });
+        }
+
+        const absolutePath = path.resolve(record.fileUrl);
+
+        // if (!fs.existsSync(absolutePath)) {
+        //     return res.status(404).json({ message: "File not found" });
+        // }
+
+        // Set content type based on file extension
+        if (absolutePath.endsWith(".pdf")) {
+            res.setHeader("Content-Type", "application/pdf");
+        } else if (absolutePath.match(/\.(jpg|jpeg|png|gif)$/i)) {
+            res.setHeader("Content-Type", "image/jpeg");
+        } else {
+            res.setHeader("Content-Type", "application/octet-stream");
+        }
+
+        res.sendFile(absolutePath);
+    } catch (error) {
+        console.error("StreamRecordFile Error:", error);
+        res.status(500).json({ message: "Failed to stream file" });
+    }
+}

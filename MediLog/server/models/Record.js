@@ -7,7 +7,7 @@ const recordSchema = new mongoose.Schema({
     date: { type: Date, default: Date.now },
     fileUrl: { type: String }, // public Cloudinary URL
     cloudinaryId: { type: String }, // Cloudinary file ID
-    shareToken: { type: String, unique: true }, // for sharing with doctor
+    shareToken: { type: String }, // for sharing with doctor
     category: { type: String, required: true } // new field for folder/category
 }, { timestamps: true });
 
