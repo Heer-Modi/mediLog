@@ -7,7 +7,7 @@ import Register from './pages/Register';
 import DashboardHome from './pages/dashboard/DashboardHome';
 import UploadRecord from './pages/dashboard/UploadRecord';
 import ViewRecords from './pages/dashboard/ViewRecords';
-import Profile from './pages/dashboard/Profile';
+import PatientProfile from './pages/dashboard/PatientProfile';
 import Calendar from './pages/dashboard/Calendar';
 import Share from './pages/dashboard/Share';
 
@@ -27,7 +27,7 @@ const App = () => {
       <Route path="/dashboard/home" element={<DashboardHome />} />
       <Route path="/dashboard/upload" element={<UploadRecord />} />
       <Route path="/dashboard/records" element={<ViewRecords />} />
-      <Route path="/dashboard/profile" element={<Profile />} />
+      <Route path="/dashboard/patient-profile" element={<PatientProfile />} />
       <Route path="/dashboard/calendar" element={<Calendar />} />
       <Route path="/dashboard/share" element={<Share />} />
 

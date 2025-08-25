@@ -4,6 +4,9 @@ const connectDB = require("./config/db");
 const cors = require("cors");
 const userRoutes = require("./routes/userRoutes");
 const recordRoutes = require("./routes/recordRoutes");
+const patientRoutes = require("./routes/patientRoutes");
+const doctorRoutes = require("./routes/doctorRoutes");
+
 
 dotenv.config();
 connectDB();
@@ -17,6 +20,9 @@ app.use(express.json());
 // Routes
 app.use("/api/users", userRoutes);
 app.use("/api/records", recordRoutes);
+app.use("/api/patients", patientRoutes);
+app.use("/api/doctors", doctorRoutes);
+
 
 app.get("/", (req, res) => {
     res.send("MediLog API is running 🚀");

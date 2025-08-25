@@ -32,7 +32,7 @@ const Sidebar = () => {
           <FaFileAlt />
           <span>Records</span>
         </NavLink>
-        <NavLink to="/dashboard/profile" className={({ isActive }) => `${styles.link} ${isActive ? styles.active : ''}` }>
+        <NavLink to="/dashboard/patient-profile" className={({ isActive }) => `${styles.link} ${isActive ? styles.active : ''}` }>
           <FaUser />
           <span>Profile</span>
         </NavLink>

@@ -8,7 +8,6 @@ import {
 import FolderIcon from "@mui/icons-material/Folder";
 import ShareIcon from "@mui/icons-material/Share";
 import DeleteIcon from "@mui/icons-material/Delete";
-import DownloadIcon from "@mui/icons-material/Download";
 import CloseIcon from "@mui/icons-material/Close";
 import axios from "axios";
 import styles from "../../styles/ViewRecords.module.css";
@@ -123,12 +122,6 @@ const ViewRecords = () => {
     setModalOpen(true);
   };
 
-  const handleDownload = (rec) => {
-    const token = getToken();
-    const dlUrl = `${API_BASE_URL}/api/records/${rec._id}/download?token=${token}`;
-    window.open(dlUrl, "_blank");
-  };
-
   const renderFileModal = () => {
     if (!activeRecord) return null;
     const token = getToken();
@@ -209,7 +202,6 @@ const ViewRecords = () => {
                           </Typography>
                           <Box className={styles.actionRow}>
                             <Button onClick={() => handleView(rec)}>View</Button>
-                            <IconButton onClick={() => handleDownload(rec)}><DownloadIcon /></IconButton>
                             <IconButton onClick={() => handleShare(rec)} title="Share"><ShareIcon /></IconButton>
                             <IconButton onClick={() => handleDelete(rec._id)} title="Delete"><DeleteIcon /></IconButton>
                           </Box>
