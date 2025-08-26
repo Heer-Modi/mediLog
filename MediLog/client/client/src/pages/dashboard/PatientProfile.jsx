@@ -435,8 +435,8 @@ const PatientProfile = () => {
                     <label>Blood Group</label>
                     <input
                       type="text"
-                      name="bloodGroup"
-                      value={bloodGroup}
+                      name="emergencyInfo.bloodGroup"
+                      value={emergencyInfo.bloodGroup || ""}
                       onChange={handleChange}
                       style={styles.formInput}
                     />
@@ -455,8 +455,8 @@ const PatientProfile = () => {
                     <label>Allergies</label>
                     <input
                       type="text"
-                      name="allergies"
-                      value={allergies}
+                      name="emergencyInfo.allergies"
+                      value={emergencyInfo.allergies || ""}
                       onChange={handleChange}
                       style={styles.formInput}
                     />
@@ -526,13 +526,13 @@ const PatientProfile = () => {
                     <Typography variant="body2" color="textSecondary">
                       Blood Group
                     </Typography>
-                    <Typography>{bloodGroup || "Not provided"}</Typography>
+                    <Typography>{emergencyInfo?.bloodGroup || "Not provided"}</Typography>
                   </Box>
                   <Box>
                     <Typography variant="body2" color="textSecondary">
                       Allergies
                     </Typography>
-                    <Typography>{allergies || "Not provided"}</Typography>
+                    <Typography>{emergencyInfo?.allergies || "Not provided"}</Typography>
                   </Box>
                   <Box>
                     <Typography variant="body2" color="textSecondary">

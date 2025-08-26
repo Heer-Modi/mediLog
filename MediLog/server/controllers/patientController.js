@@ -24,18 +24,18 @@ exports.savePatientProfile = async (req, res) => {
     }
 
     // emergencyInfo can come nested (emergencyInfo.xxx) or flat
-    const emergency = {
+    const emergencyInfo = {
       bloodGroup:
-        req.body["emergencyInfo.bloodGroup"] ??
-        req.body.bloodGroup ??
+      req.body.bloodGroup ||
+        req.body["emergencyInfo.bloodGroup"] ||
         (req.body.emergencyInfo && req.body.emergencyInfo.bloodGroup),
       allergies:
-        req.body["emergencyInfo.allergies"] ??
-        req.body.allergies ??
+      req.body.allergies ||
+        req.body["emergencyInfo.allergies"] ||
         (req.body.emergencyInfo && req.body.emergencyInfo.allergies),
       contactNumber:
-        req.body["emergencyInfo.contactNumber"] ??
-        req.body.contactNumber ??
+      req.body.contactNumber ||
+        req.body["emergencyInfo.contactNumber"] ||
         (req.body.emergencyInfo && req.body.emergencyInfo.contactNumber),
     };
 
@@ -51,7 +51,7 @@ exports.savePatientProfile = async (req, res) => {
       ...(gender !== undefined && { gender }),
       ...(age !== undefined && !Number.isNaN(age) && { age }),
       ...(medicalHistory && { medicalHistory }),
-      emergencyInfo: emergency, // overwrite as a block; controller always sends an object
+      ...(emergencyInfo && { emergencyInfo }), // overwrite as a block; controller always sends an object
       ...(photoUrl && { photo: photoUrl }),
     };
 
