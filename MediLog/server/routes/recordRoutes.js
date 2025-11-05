@@ -1,4 +1,3 @@
-// server/routes/recordRoutes.js
 const express = require("express");
 const {
     getRecords,
@@ -9,7 +8,8 @@ const {
     downloadRecordFile,
     getSharedRecordFile,
     createRecordLocal,
-    streamLocalRecord
+    streamLocalRecord,
+    shareRecordWithDoctor // **NEW**: Import share function
 } = require("../controllers/recordController");
 const { protect } = require("../middleware/authMiddleware");
 const uploadCloudinary = require("../middleware/uploadCloudinary");
@@ -26,6 +26,9 @@ router.post("/", protect, uploadLocal.single("file"), createRecordLocal);
 
 // Delete record
 router.delete("/:id", protect, deleteRecord);
+
+// **NEW**: Share record with a specific doctor
+router.post("/:id/share", protect, shareRecordWithDoctor);
 
 // Public metadata by share token
 router.get("/shared/:token", getSharedRecord);

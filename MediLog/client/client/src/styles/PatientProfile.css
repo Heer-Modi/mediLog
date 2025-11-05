@@ -1,0 +1,438 @@
+/* Container */
+.patientProfileContainer {
+  display: flex;
+  min-height: 100vh;
+  font-family: 'Poppins', 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  background-attachment: fixed;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Animated Background */
+.patientProfileContainer::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 20% 20%, rgba(167, 139, 250, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(249, 168, 212, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 40% 60%, rgba(139, 92, 246, 0.05) 0%, transparent 50%);
+  animation: backgroundFloat 20s ease-in-out infinite;
+  z-index: -1;
+}
+
+@keyframes backgroundFloat {
+  0%, 100% { transform: translateX(0) translateY(0); }
+  33% { transform: translateX(-10px) translateY(-5px); }
+  66% { transform: translateX(10px) translateY(5px); }
+}
+
+/* Main Content */
+.patientMainContent {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  margin-left: 134px;
+  overflow-y: auto;
+  max-height: 100vh;
+  position: relative;
+}
+
+/* Profile Card */
+.profileCard {
+  max-width: 1200px;
+  margin: 32px auto 0 auto;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 24px;
+  box-shadow: 
+    0 25px 50px rgba(0, 0, 0, 0.15),
+    0 0 0 1px rgba(255, 255, 255, 0.2);
+  overflow: hidden;
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  animation: slideUp 0.8s ease-out;
+  position: relative;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Card Header */
+.profileCardHeader {
+  background: linear-gradient(135deg, #a78bfa 0%, #f9a8d4 100%);
+  color: #fff;
+  padding: 2rem 3rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.profileCardHeader::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(180deg); }
+}
+
+.profileTitle {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  position: relative;
+  z-index: 1;
+  text-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+}
+
+.profileSubtitle {
+  font-size: 1.1rem;
+  opacity: 0.95;
+  position: relative;
+  z-index: 1;
+  font-weight: 400;
+}
+
+/* Body */
+.profileCardBody {
+  padding: 2rem 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #fff;
+  position: relative;
+}
+
+/* Photo Section */
+.photoContainer {
+  position: relative;
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profilePhoto {
+  width: 180px;
+  height: 180px;
+  border-radius: 20px;
+  object-fit: cover;
+  box-shadow: 
+    0 12px 40px rgba(139, 92, 246, 0.18),
+    0 6px 20px rgba(0, 0, 0, 0.12);
+  border: 4px solid #fff;
+  background: #f9fafb;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.profilePhoto:hover {
+  transform: translateY(-6px);
+  box-shadow: 
+    0 16px 50px rgba(139, 92, 246, 0.25),
+    0 8px 25px rgba(0, 0, 0, 0.18);
+}
+
+.photoEditIcon {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  background: linear-gradient(135deg, #a78bfa 0%, #f9a8d4 100%);
+  color: #fff;
+  padding: 12px;
+  border-radius: 50%;
+  box-shadow: 
+    0 6px 16px rgba(139, 92, 246, 0.35),
+    0 3px 8px rgba(0, 0, 0, 0.12);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 3px solid #fff;
+}
+
+.photoEditIcon:hover {
+  transform: scale(1.1);
+  box-shadow: 
+    0 8px 20px rgba(139, 92, 246, 0.4),
+    0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Form Grid */
+.profileFormGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+  width: 100%;
+  max-width: 1000px;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  position: relative;
+}
+
+.formGroup label {
+  font-size: 1.1rem;
+  color: #374151;
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+
+.formInput {
+  padding: 18px 22px;
+  border-radius: 16px;
+  border: 2px solid #e5e7eb;
+  font-size: 16px;
+  font-family: inherit;
+  background: #fff;
+  transition: all 0.3s ease;
+  outline: none;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+}
+
+.formInput:focus {
+  border-color: #a78bfa;
+  box-shadow: 
+    0 0 0 3px rgba(167, 139, 250, 0.1),
+    0 2px 8px rgba(139, 92, 246, 0.1);
+  transform: translateY(-1px);
+}
+
+.formInput:hover {
+  border-color: #d1d5db;
+  transform: translateY(-1px);
+}
+
+/* Full Width Inputs */
+.formGroup.fullWidth {
+  grid-column: 1 / -1;
+}
+
+/* Buttons */
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+.primaryButton {
+  background: linear-gradient(135deg, #a78bfa 0%, #f9a8d4 100%);
+  color: #fff;
+  padding: 18px 36px;
+  border-radius: 16px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border: none;
+  box-shadow: 
+    0 6px 20px rgba(139, 92, 246, 0.25),
+    0 3px 10px rgba(0, 0, 0, 0.12);
+  transition: all 0.3s ease;
+  font-family: inherit;
+  position: relative;
+  overflow: hidden;
+}
+
+.primaryButton::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.primaryButton:hover::before {
+  left: 100%;
+}
+
+.primaryButton:hover {
+  transform: translateY(-3px);
+  box-shadow: 
+    0 8px 24px rgba(139, 92, 246, 0.3),
+    0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.primaryButton:active {
+  transform: translateY(-1px);
+}
+
+.dangerButton {
+  background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+  color: #dc2626;
+  padding: 18px 36px;
+  border-radius: 16px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border: 2px solid #fecaca;
+  box-shadow: 
+    0 6px 20px rgba(220, 38, 38, 0.15),
+    0 3px 10px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  font-family: inherit;
+}
+
+.dangerButton:hover {
+  transform: translateY(-3px);
+  background: linear-gradient(135deg, #fecaca 0%, #fca5a5 100%);
+  border-color: #fca5a5;
+  box-shadow: 
+    0 8px 24px rgba(220, 38, 38, 0.2),
+    0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.dangerButton:active {
+  transform: translateY(-1px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .patientMainContent {
+    margin-left: 0;
+  }
+
+  .profileCard {
+    margin: 20px auto 0 auto;
+    border-radius: 16px;
+  }
+
+  .profileCardHeader {
+    padding: 1.5rem 2rem;
+  }
+
+  .profileTitle {
+    font-size: 2rem;
+  }
+
+  .profileCardBody {
+    padding: 2rem 2rem;
+  }
+
+  .profileFormGrid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .buttonContainer {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .primaryButton,
+  .dangerButton {
+    width: 100%;
+    max-width: 350px;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .profileCardHeader {
+    padding: 1.5rem 1.5rem;
+  }
+  
+  .profileTitle {
+    font-size: 1.75rem;
+  }
+  
+  .profileSubtitle {
+    font-size: 1rem;
+  }
+  
+  .profileCardBody {
+    padding: 1.5rem 1.5rem;
+  }
+  
+  .profilePhoto {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+/* Loading States */
+.loading {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.loading::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  margin: -10px 0 0 -10px;
+  border: 2px solid #f3f3f3;
+  border-top: 2px solid #a78bfa;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Focus States for Accessibility */
+.primaryButton:focus,
+.dangerButton:focus,
+.formInput:focus,
+.profilePhoto:focus,
+.photoEditIcon:focus {
+  outline: 2px solid #a78bfa;
+  outline-offset: 2px;
+}
+
+/* Smooth Transitions */
+* {
+  transition: all 0.3s ease;
+}
+
+/* Print Styles */
+@media print {
+  .patientProfileContainer {
+    background: #fff;
+  }
+  
+  .profileCard {
+    box-shadow: none;
+    border: 1px solid #ddd;
+  }
+  
+  .buttonContainer {
+    display: none;
+  }
+}

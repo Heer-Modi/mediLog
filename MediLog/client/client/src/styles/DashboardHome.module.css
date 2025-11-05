@@ -1,125 +1,557 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+/* Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Dashboard Container */
 .dashboardContainer {
   display: flex;
   min-height: 100vh;
   font-family: 'Poppins', 'Segoe UI', sans-serif;
-  background: #ede6fa;
-  height: 100vh;
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  background-attachment: fixed;
   overflow: hidden;
+  position: relative;
 }
 
+/* Animated Background */
+.dashboardContainer::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(167, 139, 250, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(249, 168, 212, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 40% 60%, rgba(139, 92, 246, 0.05) 0%, transparent 50%);
+  animation: backgroundFloat 20s ease-in-out infinite;
+  z-index: -1;
+}
+
+@keyframes backgroundFloat {
+
+  0%,
+  100% {
+    transform: translateX(0) translateY(0);
+  }
+
+  33% {
+    transform: translateX(-10px) translateY(-5px);
+  }
+
+  66% {
+    transform: translateX(10px) translateY(5px);
+  }
+}
+
+/* Main Content */
 .mainContent {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
   margin-left: 134px;
+  overflow-y: auto;
+  max-height: 100vh;
+  position: relative;
+  padding: 4rem;
+  /* **INCREASED PADDING** */
 }
 
+/* Content Wrapper */
 .contentWrapper {
+  flex-grow: 1;
   padding: 0;
   background: none;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
+  width: 100%;
+  max-width: 1800px;
+  /* **MADE WIDER** */
+  margin: 0 auto;
 }
 
+/* Greeting Banner */
 .greetingBanner {
-  width: 95%;
+  width: 100%;
+  /* Changed from 95% */
   margin: 32px auto 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: linear-gradient(90deg, #a78bfa 0%, #f9a8d4 100%);
+  background: linear-gradient(135deg, #a78bfa 0%, #f9a8d4 100%);
   border-radius: 24px;
-  padding: 2.5rem 2.5rem 2.5rem 2.5rem;
+  padding: 3.5rem;
+  /* **INCREASED PADDING** */
   color: #fff;
-  box-shadow: 0 4px 24px rgba(139, 92, 246, 0.10);
+  box-shadow:
+    0 8px 32px rgba(139, 92, 246, 0.15),
+    0 0 0 1px rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  animation: slideInDown 0.8s ease-out;
+  position: relative;
+  overflow: hidden;
+}
+
+.greetingBanner::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+  animation: rotate 15s linear infinite;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes slideInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Banner Content */
+.bannerContent {
+  position: relative;
+  z-index: 1;
+  flex: 1;
 }
 
 .date {
-  font-size: 1rem;
+  font-size: 1.2rem;
+  /* **INCREASED** */
   margin-bottom: 0.5rem;
   opacity: 0.9;
+  font-weight: 500;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .welcomeText {
-  font-size: 2.2rem;
-  font-weight: bold;
+  font-size: 2.8rem;
+  /* **INCREASED** */
+  font-weight: 800;
   margin-bottom: 0.25rem;
+  text-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+  background: linear-gradient(45deg, #fff 0%, rgba(255, 255, 255, 0.9) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .subText {
-  font-size: 1.1rem;
+  font-size: 1.4rem;
+  /* **INCREASED** */
   opacity: 0.95;
+  font-weight: 500;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+/* Avatar Wrapper */
 .avatarWrapper {
-  background: none;
-  padding: 0;
-  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 8px;
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  position: relative;
+  z-index: 1;
+  transition: all 0.3s ease;
+}
+
+.avatarWrapper:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
 
 .bannerAvatar {
-  width: 120px;
-  height: 120px;
+  width: 140px;
+  /* **INCREASED** */
+  height: 140px;
+  /* **INCREASED** */
   object-fit: cover;
-  border-radius: 20px;
-  box-shadow: 0 2px 12px rgba(139, 92, 246, 0.10);
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
 }
 
+.bannerAvatar:hover {
+  transform: scale(1.02);
+}
+
+/* Section Row */
 .sectionRow {
-  width: 95%;
+  width: 100%;
+  /* Changed from 95% */
   display: flex;
-  gap: 2rem;
+  gap: 3rem;
+  /* **INCREASED** */
   margin: 32px auto 0 auto;
   flex-wrap: wrap;
+  animation: fadeInUp 0.8s ease-out 0.3s both;
 }
 
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Section Cards */
 .sectionCard {
   flex: 1;
-  background: #fff;
-  padding: 2rem 1.5rem;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 3rem;
+  /* **INCREASED PADDING** */
   border-radius: 20px;
-  box-shadow: 0 4px 24px rgba(139, 92, 246, 0.10);
+  box-shadow:
+    0 8px 32px rgba(139, 92, 246, 0.08),
+    0 0 0 1px rgba(255, 255, 255, 0.1);
   min-width: 220px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
 }
 
+/* **ADDED**: Styling for card headers */
+.sectionCard h3,
+.noticeBoard h3,
+.doctorPreview h3 {
+  font-size: 1.6rem !important;
+  /* **INCREASED** */
+  font-weight: 600 !important;
+  color: #374151;
+  margin-bottom: 1.5rem !important;
+}
+
+/* **ADDED**: Styling for card content */
+.sectionCard p {
+  font-size: 1.2rem !important;
+  /* **INCREASED** */
+  color: #4b5563;
+  line-height: 1.6;
+}
+
+.sectionCard p strong {
+  font-weight: 600;
+  color: #374151;
+}
+
+
+.sectionCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #a78bfa 0%, #f9a8d4 100%);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.sectionCard:hover::before {
+  transform: scaleX(1);
+}
+
+.sectionCard:hover {
+  transform: translateY(-8px);
+  box-shadow:
+    0 16px 48px rgba(139, 92, 246, 0.12),
+    0 0 0 1px rgba(255, 255, 255, 0.2);
+}
+
+/* Notice Board */
 .noticeBoard {
   flex: 1;
-  background: #fff;
-  padding: 2rem 1.5rem;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 3rem;
+  /* **INCREASED PADDING** */
   border-radius: 20px;
-  box-shadow: 0 4px 24px rgba(139, 92, 246, 0.10);
+  box-shadow:
+    0 8px 32px rgba(139, 92, 246, 0.08),
+    0 0 0 1px rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  animation: fadeInUp 0.8s ease-out 0.5s both;
+}
+
+.noticeBoard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #10b981 0%, #059669 100%);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.noticeBoard:hover::before {
+  transform: scaleX(1);
+}
+
+.noticeBoard:hover {
+  transform: translateY(-8px);
+  box-shadow:
+    0 16px 48px rgba(139, 92, 246, 0.12),
+    0 0 0 1px rgba(255, 255, 255, 0.2);
 }
 
 .noticeBoard ul {
-  list-style: disc;
-  padding-left: 1.5rem;
+  list-style: none;
+  padding: 0;
   margin-top: 0.75rem;
-  font-size: 1rem;
+  width: 100%;
 }
 
+.noticeBoard li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem 1rem;
+  /* **INCREASED PADDING** */
+  border-bottom: 1px solid rgba(139, 92, 246, 0.1);
+  transition: all 0.3s ease;
+  font-size: 1.2rem;
+  /* **INCREASED FONT SIZE** */
+}
+
+.noticeBoard li.completed {
+  opacity: 0.6;
+  text-decoration: line-through;
+  background-color: rgba(236, 253, 245, 0.5);
+}
+
+.reminderDetails {
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+  /* **INCREASED SPACING** */
+}
+
+.reminderDetails span {
+  font-weight: 500;
+  color: #6b7280;
+}
+
+.noticeBoard li:last-child {
+  border-bottom: none;
+}
+
+.noticeBoard li:hover {
+  background: rgba(167, 139, 250, 0.05);
+  border-radius: 8px;
+  transform: translateX(4px);
+}
+
+/* Doctor Preview */
 .doctorPreview {
   flex: 1;
-  background: #fff;
-  padding: 2rem 1.5rem;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 3rem;
+  /* **INCREASED PADDING** */
   border-radius: 20px;
-  box-shadow: 0 4px 24px rgba(139, 92, 246, 0.10);
+  box-shadow:
+    0 8px 32px rgba(139, 92, 246, 0.08),
+    0 0 0 1px rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  animation: fadeInUp 0.8s ease-out 0.7s both;
+}
+
+.doctorPreview::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #f59e0b 0%, #d97706 100%);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.doctorPreview:hover::before {
+  transform: scaleX(1);
+}
+
+.doctorPreview:hover {
+  transform: translateY(-8px);
+  box-shadow:
+    0 16px 48px rgba(139, 92, 246, 0.12),
+    0 0 0 1px rgba(255, 255, 255, 0.2);
 }
 
 .doctorCard {
   display: flex;
   align-items: center;
   margin-top: 1rem;
-  gap: 1rem;
+  gap: 1.5rem;
+  /* **INCREASED SPACING** */
+  padding: 1rem;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.doctorCard:hover {
+  background: rgba(167, 139, 250, 0.05);
+  transform: translateX(4px);
 }
 
 .doctorImage {
-  width: 64px;
-  height: 64px;
+  width: 80px;
+  /* **INCREASED** */
+  height: 80px;
+  /* **INCREASED** */
   border-radius: 50%;
   object-fit: cover;
+  border: 3px solid rgba(167, 139, 250, 0.2);
+  transition: all 0.3s ease;
+}
+
+.doctorCard:hover .doctorImage {
+  border-color: #a78bfa;
+  transform: scale(1.05);
+}
+
+/* **ADDED**: Styles for doctor card text */
+.doctorCard p {
+  font-size: 1.3rem !important;
+  /* **INCREASED** */
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 0.25rem;
+}
+
+.doctorCard span {
+  font-size: 1.1rem !important;
+  /* **INCREASED** */
+  color: #6b7280;
+}
+
+
+/* Notification Popup */
+.notificationPopup {
+  position: fixed;
+  top: 30px;
+  right: 30px;
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: white;
+  z-index: 1000;
+  animation: slideInRight 0.5s ease-out;
+}
+
+.notificationPopup.success {
+  background: linear-gradient(135deg, #10b981, #059669);
+}
+
+.notificationPopup.error {
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .mainContent {
+    margin-left: 0;
+  }
+
+  .greetingBanner {
+    flex-direction: column;
+    text-align: center;
+    gap: 1.5rem;
+    padding: 2rem;
+  }
+
+  .welcomeText {
+    font-size: 1.8rem;
+  }
+
+  .sectionRow {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .sectionCard,
+  .noticeBoard,
+  .doctorPreview {
+    min-width: unset;
+  }
+}
+
+@media (max-width: 480px) {
+  .greetingBanner {
+    padding: 1.5rem;
+    margin: 20px auto 0 auto;
+  }
+
+  .welcomeText {
+    font-size: 1.5rem;
+  }
+
+  .sectionCard,
+  .noticeBoard,
+  .doctorPreview {
+    padding: 1.5rem;
+  }
 }

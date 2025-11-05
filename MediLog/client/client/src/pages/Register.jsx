@@ -16,6 +16,8 @@ const Register = () => {
     role: 'patient',
   });
 
+  const [passwordError, setPasswordError] = useState('');
+
   const [snackbar, setSnackbar] = useState({
     open: false,
     message: '',
@@ -28,8 +30,46 @@ const Register = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  const validatePassword = (password) => {
+    const minLength = 8;
+    const hasUpperCase = /[A-Z]/.test(password);
+    const hasLowerCase = /[a-z]/.test(password);
+    const hasNumber = /[0-9]/.test(password);
+    const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(password);
+
+    if (password.length < minLength) {
+      return 'Password must be at least 8 characters long.';
+    }
+    if (!hasUpperCase) {
+      return 'Password must contain at least one uppercase letter.';
+    }
+    if (!hasLowerCase) {
+      return 'Password must contain at least one lowercase letter.';
+    }
+    if (!hasNumber) {
+      return 'Password must contain at least one number.';
+    }
+    if (!hasSpecialChar) {
+      return 'Password must contain at least one special character.';
+    }
+    return ''; // No error
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    const passwordValidationError = validatePassword(formData.password);
+    if (passwordValidationError) {
+      setPasswordError(passwordValidationError);
+      setSnackbar({
+        open: true,
+        message: passwordValidationError,
+        severity: 'error',
+      });
+      return;
+    }
+    setPasswordError('');
+
     try {
       await axios.post('http://localhost:5000/api/users/register', formData);
       setSnackbar({
@@ -41,9 +81,10 @@ const Register = () => {
         navigate('/');
       }, 2000);
     } catch (err) {
+      const errorMessage = err.response?.data?.message || 'Registration failed!';
       setSnackbar({
         open: true,
-        message: 'Registration failed!',
+        message: errorMessage,
         severity: 'error',
       });
     }
@@ -100,6 +141,17 @@ const Register = () => {
             />
           </div>
 
+          {/* Password strength requirements */}
+          <div className="password-requirements">
+            <p className={formData.password.length >= 8 ? 'valid' : 'invalid'}></p>
+            <p className={/[A-Z]/.test(formData.password) ? 'valid' : 'invalid'}></p>
+            <p className={/[a-z]/.test(formData.password) ? 'valid' : 'invalid'}></p>
+            <p className={/[0-9]/.test(formData.password) ? 'valid' : 'invalid'}></p>
+            <p className={/[!@#$%^&*(),.?":{}|<>]/.test(formData.password) ? 'valid' : 'invalid'}></p>
+          </div>
+          {passwordError && <p className="error-message" style={{color: 'red', fontSize: '14px', marginTop: '10px'}}>{passwordError}</p>}
+
+
           <div className="form-group">
             <label>Role</label>
             <select
@@ -114,6 +166,7 @@ const Register = () => {
                 fontSize: '15px',
                 outline: 'none',
                 background: '#fff',
+                width: '100%',
               }}
             >
               <option value="patient">Patient</option>
@@ -133,8 +186,9 @@ const Register = () => {
 
       <Snackbar
         open={snackbar.open}
-        autoHideDuration={3000}
+        autoHideDuration={6000}
         onClose={() => setSnackbar({ ...snackbar, open: false })}
+        anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
       >
         <Alert
           onClose={() => setSnackbar({ ...snackbar, open: false })}
@@ -149,3 +203,4 @@ const Register = () => {
 };
 
 export default Register;
+

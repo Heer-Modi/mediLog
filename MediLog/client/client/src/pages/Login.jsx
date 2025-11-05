@@ -89,7 +89,7 @@ const Login = () => {
 
         <div className="helper-links">
           <p>
-            <a href="#">Forgot Password?</a>
+            <a href="/forgot-password">Forgot Password?</a>
           </p>
           <p>
             Do Not Have an Account? <Link to="/register">Sign Up</Link>

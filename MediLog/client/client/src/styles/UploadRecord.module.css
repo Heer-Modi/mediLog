@@ -1,180 +1,327 @@
+/* Container */
 .dashboardContainer {
-  display: flex;
-  min-height: 100vh;
-  font-family: 'Poppins', 'Segoe UI', sans-serif;
-  background: #ede6fa;
-  height: 100vh;
-  overflow: hidden;
+    display: flex;
+    min-height: 100vh;
+    font-family: 'Poppins', 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    background-attachment: fixed;
+    overflow: hidden;
+    position: relative;
 }
 
+/* Animated Background */
+.dashboardContainer::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:
+        radial-gradient(circle at 20% 20%, rgba(167, 139, 250, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(249, 168, 212, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 40% 60%, rgba(139, 92, 246, 0.05) 0%, transparent 50%);
+    animation: backgroundFloat 20s ease-in-out infinite;
+    z-index: -1;
+}
+
+@keyframes backgroundFloat {
+
+    0%,
+    100% {
+        transform: translateX(0) translateY(0);
+    }
+
+    33% {
+        transform: translateX(-10px) translateY(-5px);
+    }
+
+    66% {
+        transform: translateX(10px) translateY(5px);
+    }
+}
+
+/* Main Content */
 .mainContent {
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-  margin-left: 134px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* Center content vertically */
+    margin-left: 134px;
+    overflow-y: auto;
+    max-height: 100vh;
+    position: relative;
+    padding: 32px;
 }
 
 .contentWrapper {
-  padding: 32px 32px 0 32px;
-  background: none;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+    width: 100%;
+    max-width: 1400px;
+    /* **MADE WIDER** */
+    animation: slideUp 0.8s ease-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .heading {
-  font-weight: 700;
-  color: #8b5cf6;
-  margin-bottom: 24px !important;
-  font-size: 2rem !important;
-  letter-spacing: 0.01em;
+    font-size: 2.8rem !important;
+    /* **MADE BIGGER** */
+    font-weight: 700 !important;
+    margin-bottom: 2.5rem !important;
+    text-align: center;
+    color: #374151;
+    letter-spacing: 0.01em;
 }
 
+/* --- FOLDER STYLES (from ViewRecords) --- */
 .folderGrid {
-  width: 100%;
-  margin-top: 32px;
-  margin-bottom: 32px;
-  display: flex;
-  justify-content: center;
-  gap: 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    /* **INCREASED SPACING** */
+    width: 100%;
+    max-width: 1100px;
+    /* **MADE WIDER** */
+    margin: 0 auto 2rem auto;
 }
 
 .folderCard {
-  cursor: pointer;
-  border-radius: 24px !important;
-  box-shadow: 0 4px 24px rgba(139, 92, 246, 0.10) !important;
-  background: linear-gradient(90deg, #b993f7 0%, #d1a5f7 100%) !important;
-  transition: box-shadow 0.2s, background 0.2s;
-  text-align: center;
-  min-width: 240px;
-  max-width: 240px;
-  min-height: 180px;
-  max-height: 180px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto;
-  position: relative;
+    cursor: pointer;
+    background: #ffffff;
+    border-radius: 20px !important;
+    /* **INCREASED** */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05) !important;
+    transition: all 0.3s ease-out !important;
+    border: 1px solid #e5e7eb;
+    width: 100%;
 }
-.folderCard:hover, .folderCard:focus {
-  box-shadow: 0 8px 32px rgba(139, 92, 246, 0.18) !important;
-  background: linear-gradient(90deg, #a78bfa 0%, #f9a8d4 100%) !important;
+
+.folderCard:hover,
+.folderCard:focus {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(139, 92, 246, 0.1) !important;
 }
 
 .folderCardContent {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 2.5rem 3.5rem !important;
+    /* **MADE BIGGER** */
+    gap: 2rem;
+    /* **INCREASED SPACING** */
 }
 
 .folderIcon {
-  font-size: 3.5rem !important;
-  color: #fff !important;
-  margin-bottom: 16px;
-  filter: drop-shadow(0 2px 8px rgba(139, 92, 246, 0.15));
+    font-size: 3.5rem !important;
+    /* **MADE BIGGER** */
+    color: #a78bfa !important;
 }
 
 .folderName {
-  font-size: 1.3rem;
-  font-weight: 800;
-  color: #fff;
-  letter-spacing: 0.03em;
-  text-shadow: 0 2px 8px rgba(139, 92, 246, 0.10);
-  font-family: 'Poppins', 'Segoe UI', sans-serif;
+    font-size: 1.75rem !important;
+    /* **MADE BIGGER** */
+    font-weight: 600 !important;
+    color: #4b5563 !important;
+    font-family: 'Poppins', 'Segoe UI', sans-serif;
 }
 
+.folderGrid .folderCard:nth-child(1) .folderIcon {
+    color: #3b82f6 !important;
+    /* Blue */
+}
+
+.folderGrid .folderCard:nth-child(2) .folderIcon {
+    color: #ef4444 !important;
+    /* Red */
+}
+
+.folderGrid .folderCard:nth-child(3) .folderIcon {
+    color: #10b981 !important;
+    /* Green */
+}
+
+
+/* --- UPLOAD FORM STYLES --- */
 .uploadFormBox {
-  width: 100%;
-  max-width: 900px;
-  background: #fff;
-  border-radius: 24px;
-  box-shadow: 0 4px 24px rgba(139, 92, 246, 0.10);
-  padding: 32px 32px 24px 32px;
-  margin-top: 32px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 24px;
+    box-shadow:
+        0 25px 50px rgba(0, 0, 0, 0.15),
+        0 0 0 1px rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 3rem 3.5rem;
+    /* **MADE BIGGER** */
+    max-width: 1100px;
+    /* **MADE WIDER** */
+    margin: 0 auto;
+    width: 100%;
 }
 
 .folderHeader {
-  display: flex;
-  align-items: center;
-  margin-bottom: 24px;
-  width: 100%;
-}
-
-.backButton {
-  margin-right: 12px !important;
-  background: none !important;
-  box-shadow: none !important;
+    display: flex;
+    align-items: center;
+    margin-bottom: 2.5rem;
+    /* **INCREASED SPACING** */
+    width: 100%;
 }
 
 .folderIconLarge {
-  font-size: 2.5rem !important;
-  color: #8b5cf6 !important;
-  margin-right: 12px;
+    font-size: 3.2rem !important;
+    /* **MADE BIGGER** */
+    color: #a78bfa !important;
+    margin-right: 1.5rem;
+    /* **INCREASED SPACING** */
 }
 
 .folderNameLarge {
-  font-size: 1.3rem;
-  font-weight: 700;
-  color: #8b5cf6;
+    font-size: 1.8rem;
+    /* **MADE BIGGER** */
+    font-weight: 700;
+    color: #374151;
 }
 
 .uploadForm {
-  width: 100%;
-  margin-bottom: 0;
+    width: 100%;
+    margin-bottom: 0;
 }
 
-.folderLabel {
-  font-weight: bold;
-  color: #8b5cf6;
-  font-size: 1.1rem;
-  margin-bottom: 8px !important;
+/* Form Inputs and Buttons */
+.MuiTextField-root {
+    margin-bottom: 24px !important;
 }
 
-.recordCard {
-  border-radius: 20px !important;
-  box-shadow: 0 4px 24px rgba(139, 92, 246, 0.10) !important;
-  margin-bottom: 12px;
+/* **NEW**: Style for the labels */
+.MuiFormLabel-root {
+    font-size: 1.2rem !important;
+    /* **MADE BIGGER** */
 }
 
-.recordTitle {
-  font-weight: 600;
-  font-size: 1.1rem;
-  margin-bottom: 4px !important;
+.MuiInputBase-root {
+    border-radius: 16px !important;
+    border: 2px solid #e5e7eb !important;
+    font-size: 1.2rem !important;
+    /* **MADE BIGGER** */
+    font-family: inherit !important;
+    background: #fff !important;
+    transition: all 0.3s ease !important;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06) !important;
+    padding: 16px 20px !important;
+    /* **MADE BIGGER** */
 }
 
-.recordDescription {
-  color: #6b7280;
-  margin-bottom: 4px !important;
+.MuiInputBase-root fieldset {
+    border: none !important;
+    /* Hide the default Mui outline */
 }
 
-.recordDate {
-  color: #a78bfa;
-  font-size: 0.95rem;
-  margin-bottom: 8px !important;
+.MuiInputBase-root:hover {
+    border-color: #d1d5db !important;
 }
 
-.viewButton {
-  background: #ede6fa !important;
-  color: #8b5cf6 !important;
-  border-radius: 12px !important;
-  font-weight: 600 !important;
-  margin-right: 8px !important;
-  text-transform: none !important;
+.MuiInputBase-root.Mui-focused {
+    border-color: #a78bfa !important;
+    box-shadow:
+        0 0 0 3px rgba(167, 139, 250, 0.1),
+        0 2px 8px rgba(139, 92, 246, 0.1) !important;
 }
 
-.uploadButton {
-  height: 56px !important;
-  font-weight: 600 !important;
-  border-radius: 12px !important;
-  background: linear-gradient(90deg, #a78bfa 0%, #f9a8d4 100%) !important;
-  color: #fff !important;
-  box-shadow: 0 2px 8px rgba(139, 92, 246, 0.10) !important;
-  text-transform: none !important;
-} 
+.uploadButton,
+.uploadButton:hover {
+    height: 64px !important;
+    /* **MADE BIGGER** */
+    font-weight: 600 !important;
+    font-size: 1.3rem !important;
+    /* **MADE BIGGER** */
+    border-radius: 16px !important;
+    background: linear-gradient(135deg, #a78bfa 0%, #f9a8d4 100%) !important;
+    color: #fff !important;
+    box-shadow:
+        0 6px 20px rgba(139, 92, 246, 0.25),
+        0 3px 10px rgba(0, 0, 0, 0.12) !important;
+    transition: all 0.3s ease !important;
+    text-transform: none !important;
+    position: relative;
+    overflow: hidden;
+}
+
+.uploadButton::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.uploadButton:hover::before {
+    left: 100%;
+}
+
+.uploadButton:hover {
+    transform: translateY(-3px);
+    box-shadow:
+        0 8px 24px rgba(139, 92, 246, 0.3),
+        0 4px 12px rgba(0, 0, 0, 0.15) !important;
+}
+
+.uploadButton:active {
+    transform: translateY(-1px);
+}
+
+.uploadButton.Mui-disabled {
+    background: #e0e0e0 !important;
+    color: #a0a0a0 !important;
+    box-shadow: none !important;
+}
+
+/* Back Button */
+.backButton {
+    background: none !important;
+    box-shadow: none !important;
+    transition: all 0.3s ease;
+    border-radius: 50% !important;
+    width: 48px;
+    height: 48px;
+    color: #a78bfa !important;
+}
+
+.backButton:hover {
+    background: rgba(167, 139, 250, 0.1) !important;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .mainContent {
+        margin-left: 0;
+    }
+
+    .uploadFormBox,
+    .folderCard {
+        border-radius: 16px !important;
+    }
+
+    .uploadFormBox {
+        padding: 2rem !important;
+    }
+}

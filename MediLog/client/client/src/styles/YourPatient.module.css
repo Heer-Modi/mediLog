@@ -1,0 +1,153 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+/* Base styles */
+.dashboardContainer {
+    display: flex;
+    min-height: 100vh;
+    font-family: 'Poppins', 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+}
+
+.mainContent {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    margin-left: 134px;
+    /* Assuming sidebar width */
+    padding: 4rem;
+    /* **INCREASED** */
+    overflow-y: auto;
+    max-height: 100vh;
+}
+
+.headerTitle {
+    font-weight: 700 !important;
+    color: #374151;
+    font-size: 2.8rem !important;
+    /* **INCREASED** */
+    margin-bottom: 0.25rem !important;
+}
+
+.headerSubtitle {
+    color: #6b7280;
+    margin-bottom: 2.5rem !important;
+    /* **INCREASED** */
+    font-size: 1.4rem !important;
+    /* **INCREASED** */
+}
+
+.searchBar {
+    border-radius: 16px !important;
+    margin-bottom: 2.5rem !important;
+    /* **INCREASED** */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05) !important;
+    max-width: 1200px;
+    width: 100%;
+}
+
+/* **NEW**: Increase search bar text */
+.searchBar .MuiInputBase-root {
+    font-size: 1.2rem !important;
+    padding: 8px;
+}
+
+.searchBar .MuiInputBase-root .MuiSvgIcon-root {
+    font-size: 1.8rem !important;
+}
+
+
+/* Patient List Styling */
+.patientListContainer {
+    width: 100%;
+    max-width: 1200px;
+    /* **INCREASED** */
+    margin: 0;
+}
+
+.patientAccordion {
+    border-radius: 20px !important;
+    /* **INCREASED** */
+    margin-bottom: 1.5rem !important;
+    /* **INCREASED** */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05) !important;
+    border: 1px solid #e5e7eb;
+    /* Remove the default MUI accordion lines */
+}
+
+.patientAccordion::before {
+    display: none;
+}
+
+.patientSummary {
+    padding: 1.5rem 2rem !important;
+    /* **INCREASED** */
+    align-items: center;
+}
+
+.avatar {
+    width: 60px !important;
+    /* **INCREASED** */
+    height: 60px !important;
+    /* **INCREASED** */
+    margin-right: 1.5rem;
+    /* **INCREASED** */
+}
+
+.patientName {
+    font-weight: 600 !important;
+    font-size: 1.4rem !important;
+    /* **INCREASED** */
+    color: #374151;
+}
+
+.patientDetails {
+    background-color: #f9fafb;
+    border-top: 1px solid #e5e7eb;
+    padding: 2.5rem !important;
+    /* **INCREASED** */
+}
+
+.detailsHeader {
+    font-weight: 600 !important;
+    color: #a78bfa;
+    border-bottom: 2px solid #a78bfa;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem !important;
+    /* **INCREASED** */
+    display: inline-block;
+    font-size: 1.3rem !important;
+    /* **INCREASED** */
+}
+
+/* **NEW**: Increase details list text */
+.patientDetails .MuiListItemText-primary {
+    font-size: 1.1rem !important;
+}
+
+.patientDetails .MuiListItemText-secondary {
+    font-size: 1rem !important;
+}
+
+.patientDetails .MuiListItemIcon-root .MuiSvgIcon-root {
+    font-size: 1.8rem !important;
+    color: #9ca3af;
+}
+
+.recordsList {
+    max-height: 300px;
+    /* **INCREASED** */
+    overflow-y: auto;
+    background: #fff;
+    border-radius: 12px;
+    /* **INCREASED** */
+    border: 1px solid #e5e7eb;
+}
+
+.recordItem {
+    padding: 1rem 1.5rem !important;
+    /* **INCREASED** */
+}
+
+.recordItem:hover {
+    background-color: #f3f4f6 !important;
+}

@@ -1,70 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+/* Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Header Styles */
+.header {
+  width: calc(100% - 48px);
+  margin: 24px auto 0 auto;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  box-shadow: 
+    0 8px 32px rgba(139, 92, 246, 0.12),
+    0 0 0 1px rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 64px;
+  position: relative;
+  z-index: 10;
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  animation: slideInDown 0.6s ease-out;
+}
+
+@keyframes slideInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.logo {
+  font-size: 2rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #8b5cf6 0%, #a78bfa 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: 0.05em;
+  font-family: 'Poppins', 'Segoe UI', sans-serif;
+  text-shadow: 0 2px 4px rgba(139, 92, 246, 0.2);
+}
+
+/* Sidebar Styles */
 .sidebar {
   position: fixed;
   top: 24px;
   left: 24px;
   height: calc(100vh - 48px);
   width: 110px;
-  background: #8b5cf6;
+  background: linear-gradient(135deg, #8b5cf6 0%, #a78bfa 100%);
   border-radius: 24px;
-  box-shadow: 0 4px 24px rgba(139, 92, 246, 0.10);
+  box-shadow: 
+    0 8px 32px rgba(139, 92, 246, 0.15),
+    0 0 0 1px rgba(255, 255, 255, 0.1);
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 32px 0 24px 0;
   z-index: 1000;
-  transition: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  position: relative;
+  overflow: hidden;
 }
 
+.sidebar::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+  animation: rotate 20s linear infinite;
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Toggle Button */
 .toggleButton {
   display: none;
+  position: absolute;
+  top: 20px;
+  right: -15px;
+  width: 30px;
+  height: 30px;
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 1001;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
 }
 
-.menu {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  width: 100%;
-  margin-top: 32px;
-}
-
-.link {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  color: #fff;
-  text-decoration: none;
-  padding: 18px 0 8px 0;
-  border-radius: 16px;
-  margin: 0 12px;
-  font-size: 18px;
-  transition: background 0.2s, color 0.2s;
-  position: relative;
-}
-
-.link span {
-  margin-top: 8px;
-  font-size: 13px;
-  font-weight: 500;
-  color: #fff;
-  letter-spacing: 0.01em;
-}
-
-.link.active,
-.link:focus {
+.toggleButton:hover {
+  transform: scale(1.1);
   background: #fff;
-  color: #8b5cf6;
 }
 
-.link.active span,
-.link:focus span {
-  color: #8b5cf6;
+.toggleButton::before,
+.toggleButton::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 12px;
+  height: 2px;
+  background: #8b5cf6;
+  transform: translate(-50%, -50%);
+  transition: all 0.3s ease;
 }
 
-.link:hover {
-  background: rgba(255, 255, 255, 0.12);
+.toggleButton::after {
+  transform: translate(-50%, -50%) rotate(90deg);
 }
 
+/* Profile Photo Wrapper */
 .profilePhotoWrapper {
   width: 72px;
   height: 72px;
@@ -72,6 +137,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
+  z-index: 1;
+  transition: all 0.3s ease;
+}
+
+.profilePhotoWrapper:hover {
+  transform: scale(1.05);
 }
 
 .profilePhoto {
@@ -79,15 +151,158 @@
   height: 72px;
   border-radius: 50%;
   object-fit: cover;
-  border: 4px solid #fff;
-  box-shadow: 0 2px 8px rgba(139, 92, 246, 0.15);
+  border: 4px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 
+    0 4px 16px rgba(0, 0, 0, 0.15),
+    0 0 0 2px rgba(255, 255, 255, 0.2);
   background: #fff;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 1;
 }
 
+.profilePhoto:hover {
+  border-color: #fff;
+  box-shadow: 
+    0 6px 20px rgba(0, 0, 0, 0.2),
+    0 0 0 3px rgba(255, 255, 255, 0.3);
+}
+
+/* Menu */
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  margin-top: 32px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Menu Links */
+.link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: none;
+  padding: 18px 0 8px 0;
+  border-radius: 16px;
+  margin: 0 12px;
+  font-size: 18px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.link::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.1);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.link:hover::before {
+  transform: scaleX(1);
+}
+
+.link span {
+  margin-top: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+  letter-spacing: 0.01em;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.link.active,
+.link:focus {
+  background: rgba(255, 255, 255, 0.95);
+  color: #8b5cf6;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.link.active::before,
+.link:focus::before {
+  display: none;
+}
+
+.link.active span,
+.link:focus span {
+  color: #8b5cf6;
+  font-weight: 700;
+}
+
+.link:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-1px);
+}
+
+.link:hover span {
+  color: #fff;
+}
+
+/* Help and Logout Button Styling */
+.link button {
+  background: none;
+  border: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Style help and logout buttons to look like inactive menu items */
+.helpButton,
+.logoutButton {
+  background: rgba(255, 255, 255, 0.95) !important;
+  color: #8b5cf6 !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1) !important;
+}
+
+.helpButton span,
+.logoutButton span {
+  color: #8b5cf6 !important;
+  font-weight: 700 !important;
+}
+
+.helpButton:hover,
+.logoutButton:hover {
+  background: rgba(255, 255, 255, 0.95) !important;
+  transform: translateY(-1px) !important;
+}
+
+.helpButton:hover span,
+.logoutButton:hover span {
+  color: #8b5cf6 !important;
+}
+
+
+/* Top Icon */
 .topIcon {
   width: 64px;
   height: 64px;
-  background: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.15);
   border-radius: 16px;
   display: flex;
   align-items: center;
@@ -95,9 +310,156 @@
   margin-bottom: 32px;
   font-size: 36px;
   color: #fff;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 1;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-/* Remove collapsed/expanded classes */
-.collapsed {}
+.topIcon:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: scale(1.05);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
 
-.expanded {}
+/* Responsive Design */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 80px;
+    padding: 24px 0 20px 0;
+  }
+
+  .profilePhotoWrapper {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 24px;
+  }
+
+  .profilePhoto {
+    width: 60px;
+    height: 60px;
+  }
+
+  .link {
+    padding: 16px 0 6px 0;
+    margin: 0 8px;
+    font-size: 16px;
+  }
+
+  .link span {
+    font-size: 11px;
+  }
+
+
+  .topIcon {
+    width: 56px;
+    height: 56px;
+    font-size: 32px;
+    margin-bottom: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .sidebar {
+    width: 70px;
+    padding: 20px 0 16px 0;
+  }
+
+  .profilePhotoWrapper {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 20px;
+  }
+
+  .profilePhoto {
+    width: 50px;
+    height: 50px;
+  }
+
+  .link {
+    padding: 14px 0 4px 0;
+    margin: 0 6px;
+    font-size: 14px;
+  }
+
+  .link span {
+    font-size: 10px;
+  }
+
+
+  .topIcon {
+    width: 48px;
+    height: 48px;
+    font-size: 28px;
+    margin-bottom: 20px;
+  }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+  .header {
+    background: rgba(31, 41, 55, 0.95);
+    color: #f9fafb;
+  }
+
+  .logo {
+    background: linear-gradient(135deg, #a78bfa 0%, #c084fc 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+
+/* Accessibility Improvements */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Focus States for Better Accessibility */
+.link:focus {
+  outline: 2px solid rgba(255, 255, 255, 0.5);
+  outline-offset: 2px;
+}
+
+/* Loading States */
+.loading {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.loading::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  margin: -10px 0 0 -10px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top: 2px solid #fff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+
+/* Print Styles */
+@media print {
+  .sidebar {
+    display: none;
+  }
+  
+  .header {
+    box-shadow: none;
+    border: 1px solid #ccc;
+  }
+}

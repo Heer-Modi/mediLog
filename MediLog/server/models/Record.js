@@ -1,14 +1,22 @@
 const mongoose = require("mongoose");
 
 const recordSchema = new mongoose.Schema({
-    user: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
-    title: { type: String, required: true },
-    description: { type: String },
-    date: { type: Date, default: Date.now },
-    fileUrl: { type: String }, // public Cloudinary URL
-    cloudinaryId: { type: String }, // Cloudinary file ID
-    shareToken: { type: String }, // for sharing with doctor (no unique)
-    category: { type: String, required: true } // new field for folder/category
+  user: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true }, // The PATIENT who owns the record
+  title: { type: String, required: true },
+  description: { type: String },
+  date: { type: Date, default: Date.now },
+  fileUrl: { type: String }, // public Cloudinary URL
+  cloudinaryId: { type: String }, // Cloudinary file ID
+  shareToken: { type: String }, // for sharing with doctor (no unique)
+  category: { type: String, required: true }, // new field for folder/category
+
+  // **NEW FIELD** for specific doctor sharing
+  // This array will store the User IDs of doctors who have access
+  sharedWith: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User'
+  }]
+  
 }, { timestamps: true });
 
 // Remove any existing index on shareToken if it exists

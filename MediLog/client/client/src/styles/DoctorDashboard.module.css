@@ -1,0 +1,188 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+/* Base styles */
+.dashboardContainer {
+    display: flex;
+    min-height: 100vh;
+    font-family: 'Poppins', 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+}
+
+.mainContent {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    margin-left: 134px; /* Assuming sidebar width */
+    overflow-y: auto;
+    max-height: 100vh;
+    padding: 4rem; /* **INCREASED PADDING** */
+    /* **FIXED**: Removed 'align-items: center' which was breaking the layout */
+}
+
+.contentWrapper {
+    flex-grow: 1;
+    padding: 0;
+    background: none;
+    display: flex;
+    flex-direction: column;
+    /* **FIXED**: Removed 'align-items: center' which was breaking the layout */
+    position: relative;
+    width: 100%;
+    max-width: 1800px; /* **MADE WIDER** */
+    margin: 0 auto;
+}
+
+.loadingContainer {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    color: #6b7280;
+}
+
+/* Welcome Banner */
+.welcomeBanner {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(135deg, #a78bfa 0%, #f9a8d4 100%);
+    border-radius: 24px !important;
+    padding: 3.5rem; /* **INCREASED PADDING** */
+    color: #fff;
+    box-shadow: 0 8px 32px rgba(139, 92, 246, 0.15) !important;
+    margin-bottom: 3rem; /* **INCREASED SPACING** */
+}
+
+.welcomeText {
+    font-weight: 700 !important;
+    font-size: 2.8rem !important; /* **INCREASED** */
+}
+
+.welcomeSubText {
+    opacity: 0.9;
+    font-size: 1.4rem !important; /* **INCREASED** */
+}
+
+.bannerAvatar {
+    width: 140px !important; /* **INCREASED** */
+    height: 140px !important; /* **INCREASED** */
+    border: 3px solid #fff;
+}
+
+/* Stat Cards */
+.statGrid {
+    margin-bottom: 2rem; /* **INCREASED** */
+    width: 100%;
+}
+
+.statCard {
+    border-radius: 20px !important;
+    padding: 3rem !important; /* **INCREASED PADDING** */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0 8px 32px rgba(139, 92, 246, 0.08) !important;
+    border: 1px solid #e5e7eb;
+    transition: all 0.3s ease;
+}
+
+.statCard:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px rgba(139, 92, 246, 0.12) !important;
+}
+
+.statIcon {
+    font-size: 3rem !important; /* **INCREASED** */
+    margin-bottom: 1.5rem; /* **INCREASED** */
+}
+
+.statValue {
+    font-size: 3rem !important; /* **INCREASED** */
+    font-weight: 700 !important;
+    line-height: 1.1;
+    color: #374151;
+}
+
+.statLabel {
+    font-size: 1.2rem !important; /* **INCREASED** */
+    color: #6b7280;
+}
+
+/* Stat Card Colors */
+.stat1 .statIcon { color: #8b5cf6; }
+.stat2 .statIcon { color: #3b82f6; }
+.stat3 .statIcon { color: #10b981; }
+
+/* Content Cards */
+.contentCard {
+    border-radius: 20px !important;
+    padding: 3rem !important; /* **INCREASED PADDING** */
+    box-shadow: 0 8px 32px rgba(139, 92, 246, 0.08) !important;
+    border: 1px solid #e5e7eb;
+    height: 100%;
+}
+
+.cardTitle {
+    font-weight: 600 !important;
+    color: #374151;
+    margin-bottom: 1.5rem !important; /* **INCREASED** */
+    border-bottom: 2px solid #a78bfa;
+    padding-bottom: 0.75rem; /* **INCREASED** */
+    display: inline-block;
+    font-size: 1.6rem !important; /* **INCREASED** */
+}
+
+.listItem {
+    border-bottom: 1px solid #f3f4f6;
+    padding: 1.25rem 0.5rem !important; /* **INCREASED** */
+}
+
+/* **NEW**: Increase list item text size */
+.listItem .MuiListItemText-primary {
+    font-size: 1.2rem !important;
+    font-weight: 500 !important;
+}
+.listItem .MuiListItemText-secondary {
+    font-size: 1rem !important;
+}
+
+
+.listItem:last-child {
+    border-bottom: none;
+}
+
+.videoChip {
+    background-color: #e0f2fe !important;
+    color: #0284c7 !important;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem; /* **INCREASED** */
+    padding: 8px 12px; /* **INCREASED** */
+    border-radius: 10px; /* **INCREASED** */
+    font-size: 0.9rem; /* **INCREASED** */
+}
+
+.noItemsText {
+    text-align: center;
+    padding: 2rem;
+    color: #9ca3af;
+    font-style: italic;
+    font-size: 1.1rem; /* **INCREASED** */
+}
+
+.viewAllButton {
+    background: linear-gradient(135deg, #a78bfa 0%, #8b5cf6 100%) !important;
+    color: white !important;
+    font-weight: 600 !important;
+    border-radius: 12px !important;
+    text-transform: none !important;
+    padding: 0.75rem 2rem !important; /* **INCREASED** */
+    font-size: 1.1rem !important; /* **INCREASED** */
+}
+

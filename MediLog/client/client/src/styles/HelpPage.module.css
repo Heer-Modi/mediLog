@@ -1,0 +1,81 @@
+/* Base container matching other dashboard pages */
+.helpContainer {
+    display: flex;
+    min-height: 100vh;
+    font-family: 'Poppins', 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+}
+
+.mainContent {
+    flex-grow: 1;
+    margin-left: 134px; /* Sidebar width */
+    padding: 2.5rem;
+    overflow-y: auto;
+    max-height: 100vh;
+}
+
+.headerTitle {
+    font-weight: 700 !important;
+    color: #374151;
+    margin-bottom: 0.25rem !important;
+}
+
+.headerSubtitle {
+    color: #6b7280;
+    margin-bottom: 2rem !important;
+    font-size: 1.1rem !important;
+}
+
+.contentCard {
+    border-radius: 20px !important;
+    padding: 2.5rem !important;
+    box-shadow: 0 8px 32px rgba(139, 92, 246, 0.08) !important;
+    border: 1px solid #e5e7eb;
+    background-color: #ffffff;
+}
+
+.sectionTitle {
+    font-weight: 600 !important;
+    color: #374151;
+    margin-bottom: 1.5rem !important;
+    border-bottom: 2px solid #a78bfa;
+    padding-bottom: 0.5rem;
+    display: inline-block;
+}
+
+.accordion {
+    border-radius: 12px !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04) !important;
+    border: 1px solid #e5e7eb;
+    margin-bottom: 1rem !important;
+}
+
+.accordion:before {
+    display: none; /* Removes MUI's default top border */
+}
+
+.question {
+    font-weight: 500 !important;
+    font-size: 1.1rem !important;
+    color: #4b5563;
+}
+
+.answer {
+    color: #6b7280;
+    line-height: 1.7;
+}
+
+.answer ul {
+    padding-left: 20px;
+    margin-top: 0.5rem;
+}
+
+.answer li {
+    margin-bottom: 0.5rem;
+}
+
+.footer {
+    text-align: center;
+    margin-top: 3rem;
+    color: #9ca3af;
+}

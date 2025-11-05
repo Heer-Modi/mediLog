@@ -1,0 +1,94 @@
+/* Base styles */
+.dashboardContainer {
+    display: flex;
+    min-height: 100vh;
+    font-family: 'Poppins', 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+}
+
+.mainContent {
+    flex-grow: 1;
+    margin-left: 134px; /* Assuming sidebar width */
+    padding: 2.5rem;
+    overflow-y: auto;
+    max-height: 100vh;
+}
+
+.headerTitle {
+    font-weight: 700 !important;
+    color: #374151;
+    margin-bottom: 0.25rem !important;
+}
+
+.headerSubtitle {
+    color: #6b7280;
+    margin-bottom: 2rem !important;
+    font-size: 1.1rem !important;
+}
+
+.loadingBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 4rem;
+    gap: 1rem;
+    color: #6b7280;
+}
+
+.contentCard {
+    border-radius: 20px !important;
+    padding: 2rem !important;
+    box-shadow: 0 8px 32px rgba(139, 92, 246, 0.08) !important;
+    border: 1px solid #e5e7eb;
+    height: 100%;
+}
+
+.cardTitlePending {
+    font-weight: 600 !important;
+    color: #d97706 !important;
+    margin-bottom: 1rem !important;
+    border-bottom: 2px solid #f59e0b;
+    padding-bottom: 0.5rem;
+    display: inline-block;
+}
+
+.cardTitleConfirmed {
+    font-weight: 600 !important;
+    color: #059669 !important;
+    margin-bottom: 1rem !important;
+    border-bottom: 2px solid #10b981;
+    padding-bottom: 0.5rem;
+    display: inline-block;
+}
+
+.cardTitlePast {
+    font-weight: 600 !important;
+    color: #6b7280 !important;
+    margin-bottom: 1rem !important;
+    border-bottom: 2px solid #9ca3af;
+    padding-bottom: 0.5rem;
+    display: inline-block;
+}
+
+.appointmentItem {
+    padding: 1rem 0.5rem !important;
+}
+
+.deniedAppointment {
+    opacity: 0.6;
+    text-decoration: line-through;
+}
+
+.noItemsText {
+    text-align: center;
+    padding: 2rem;
+    color: #9ca3af;
+    font-style: italic;
+}
+
+.actionButtons {
+    display: flex;
+    gap: 0.5rem;
+}
+

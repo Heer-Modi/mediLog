@@ -1,0 +1,300 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+/* Main Calendar Page Container */
+.calendarContainer {
+  display: flex;
+  min-height: 100vh;
+  font-family: 'Poppins', 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  background-attachment: fixed;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Main Content Area */
+.calendarMainContent {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  margin-left: 134px;
+  /* Adjust if sidebar width is different */
+  overflow-y: auto;
+  max-height: 100vh;
+  padding: 3rem 4rem;
+  /* **MODIFIED**: Increased padding */
+}
+
+/* Calendar Card */
+.calendarCard {
+  width: 100%;
+  max-width: 1800px;
+  /* **MODIFIED**: Made wider */
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 24px;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.2);
+  overflow: hidden;
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  animation: slideUp 0.8s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* Calendar Header (Month/Year) */
+.calendarHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 2.5rem;
+  /* **MODIFIED**: Increased padding */
+  background: linear-gradient(135deg, #a78bfa 0%, #8b5cf6 100%);
+  color: white;
+}
+
+.calendarHeader h4 {
+  font-size: 2rem;
+  /* **MODIFIED**: Increased font size */
+  font-weight: 600;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.calendarNavButton {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  border-radius: 50%;
+  width: 44px;
+  /* **MODIFIED**: Made bigger */
+  height: 44px;
+  /* **MODIFIED**: Made bigger */
+  cursor: pointer;
+  transition: background 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.calendarNavButton:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Calendar Grid */
+.calendarGrid {
+  padding: 1.5rem;
+  /* **MODIFIED**: Increased padding */
+}
+
+.calendarWeekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.weekday {
+  font-weight: 600;
+  /* **MODIFIED** */
+  color: #4b5563;
+  padding: 1rem 0;
+  /* **MODIFIED**: Increased padding */
+  font-size: 1.1rem;
+  /* **MODIFIED**: Increased font size */
+}
+
+.calendarDays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px;
+  /* **MODIFIED**: Increased gap */
+}
+
+.calendarDay {
+  height: 150px;
+  /* **MODIFIED**: Made day boxes taller */
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 12px;
+  /* **MODIFIED**: Increased padding */
+  cursor: pointer;
+  transition: all 0.3s ease;
+  overflow-y: auto;
+  background: #fff;
+}
+
+.calendarDay:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(139, 92, 246, 0.1);
+  border-color: #a78bfa;
+}
+
+.dayNumber {
+  font-weight: 500;
+  color: #1f2937;
+  margin-bottom: 8px;
+  /* **MODIFIED**: Increased spacing */
+  font-size: 1rem;
+  /* **MODIFIED**: Increased font size */
+}
+
+/* Event Bubble */
+.eventBubble {
+  font-size: 0.9rem;
+  /* **MODIFIED**: Increased font size */
+  padding: 6px 8px;
+  /* **MODIFIED**: Increased padding */
+  border-radius: 6px;
+  margin-bottom: 6px;
+  /* **MODIFIED**: Increased spacing */
+  color: white;
+  line-height: 1.4;
+  /* **NEW**: Allow wrapping */
+  transition: background 0.3s ease;
+  word-wrap: break-word;
+  /* **NEW**: Break long words */
+}
+
+.eventBubble.medicine {
+  background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
+}
+
+.eventBubble.appointment {
+  background: linear-gradient(135deg, #a78bfa 0%, #8b5cf6 100%);
+}
+
+/* **NEW**: Style for pending appointments */
+.eventBubble.pending {
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+}
+
+.eventBubble:hover {
+  opacity: 0.85;
+}
+
+/* **NEW**: Style for doctor name in bubble */
+.eventDoctorName {
+  display: block;
+  font-size: 0.8rem;
+  opacity: 0.9;
+  margin-top: 2px;
+}
+
+/* **NEW**: Style for status in bubble */
+.eventStatus {
+  display: block;
+  font-size: 0.8rem;
+  opacity: 0.9;
+  font-weight: 600;
+  margin-top: 2px;
+}
+
+/* Modal Styles */
+.eventModal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(5px);
+}
+
+.modalContent {
+  background: white;
+  padding: 2.5rem;
+  /* **MODIFIED**: Increased padding */
+  border-radius: 16px;
+  width: 90%;
+  max-width: 500px;
+  /* **MODIFIED**: Made modal wider */
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  animation: slideUp 0.5s ease-out;
+}
+
+.modalContent h3 {
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: #374151;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+/* **NEW**: Styles for form elements inside modal */
+.modalContent .MuiFormLabel-root {
+  font-size: 1.1rem !important;
+}
+
+.modalContent .MuiInputBase-root {
+  border-radius: 16px !important;
+  border: 2px solid #e5e7eb !important;
+  font-size: 1.1rem !important;
+  font-family: inherit !important;
+  background: #fff !important;
+  transition: all 0.3s ease !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06) !important;
+  padding: 2px 4px !important;
+}
+
+.modalContent .MuiInputBase-root fieldset {
+  border: none !important;
+}
+
+.modalContent .MuiInputBase-root:hover {
+  border-color: #d1d5db !important;
+}
+
+.modalContent .MuiInputBase-root.Mui-focused {
+  border-color: #a78bfa !important;
+  box-shadow: 0 0 0 3px rgba(167, 139, 250, 0.1) !important;
+}
+
+/* **NEW**: Status chip styles */
+.eventStatusChip {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 1rem;
+  text-transform: capitalize;
+}
+
+.eventStatusChip.pending {
+  background: #f59e0b;
+}
+
+.eventStatusChip.approved {
+  background: #10b981;
+}
+
+.eventStatusChip.denied {
+  background: #ef4444;
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .calendarMainContent {
+    margin-left: 0;
+    padding: 16px;
+  }
+
+  .calendarDay {
+    height: 100px;
+  }
+}

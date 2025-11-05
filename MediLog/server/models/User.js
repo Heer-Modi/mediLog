@@ -13,7 +13,7 @@ const userSchema = new mongoose.Schema(
     phone: { type: String },
     address: { type: String },
     photo: { type: String }, // Cloudinary URL
-    age: { type: Number },   // ✅ add
+    age: { type: Number },
     gender: { type: String }, // optional
 
     // Patient-specific
@@ -24,12 +24,16 @@ const userSchema = new mongoose.Schema(
     },
     medicalHistory: [{ type: String }],
 
-    // Doctor-specific (unchanged)
+    // Doctor-specific
     specialization: { type: String },
     designation: { type: String },
     department: { type: String },
     experience: { type: Number },
     patients: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
+    
+    // **NEW**: Fields for Password Reset
+    passwordResetToken: String,
+    passwordResetExpires: Date,
   },
   { timestamps: true }
 );
@@ -48,3 +52,4 @@ userSchema.methods.matchPassword = async function (enteredPassword) {
 
 const User = mongoose.model("User", userSchema);
 module.exports = User;
+
